@@ -25,7 +25,7 @@
     <nav style="padding: 0px 70px 0px 90px;" class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-ite" href="#">
-                <img src="logo_small-removebg-preview.png" width="100px">
+                <img src="./static/imgs/logo_small-removebg-preview.png" width="100px">
             </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
@@ -101,28 +101,31 @@
                     Tender Page
                 </h1>
                 
-              <div class="box view-form">
-                <div class="columns">
+            <div class="box view-form">
+                <div class="columns tender-form-container">
 
-                    <div class="column" style="border-right: 1px solid;">
-                        <form action="" style="text-align: center;">
-                            <div class="field">
-                                <label class="label">Upload Tender document</label>
+                    <div class="column tender-form" >
+                        <form class="real-form" action="" style="text-align: center; ">
+                            <div class="field field-tender">
+                                <label class="label-tender">Upload Tender document</label>
+
                                 <div class="file has-name is-boxed">
-                                    <label class="file-label">
-                                    <input class="file-input" type="file" name="resume" />
-                                    <span class="file-cta">
-                                        <span class="file-icon">
-                                        <i class="fas fa-upload"></i>
+                                    <label class="file-label" style="width: 100%;">
+                                        <input class="file-input" type="file" name="resume" />
+                                        
+                                        <span class="file-cta">
+                                            <span class="file-icon">
+                                            <i class="fas fa-upload"></i>
+                                            </span>
+                                            <span class="file-label"> Choose a file… </span>
                                         </span>
-                                        <span class="file-label"> Choose a file… </span>
-                                    </span>
-                                    <span class="file-name"> Screen Shot 2017-07-29 at 15.54.25.png </span>
+                                        <span class="file-name-tender"> Screen Shot 2017-07-29 at 15.54.25.png </span>
                                     </label>
                                 </div>
+                                
                             </div>
-                            <div class="field">
-                                <label class="label">Tender Name</label>
+                            <div class="field field-tender">
+                                <label class="label-tender">Tender Name</label>
                                 <div class="control has-icons-left">
                                     <input class="input" type="text" placeholder="Enter tender name" name="tenderName">
                                     <span class="icon is-small is-left">
@@ -130,8 +133,8 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="field">
-                                <label class="label">Issue Date</label>
+                            <div class="field field-tender">
+                                <label class="label-tender">Issue Date</label>
                                 <div class="control has-icons-left">
                                     <input class="input" type="date" name="issueDate">
                                     <span class="icon is-small is-left">
@@ -139,39 +142,39 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="field">
-                                <label class="label">Last Submission Date</label>
+                            <div class="field field-tender">
+                                <label class="label-tender">Last Submission Date</label>
                                 <div class="control has-icons-left">
                                     <input class="input" type="date" name="submissionDate">
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-calendar-alt"></i>
                                     </span>
                                 </div>
-                            </div>
-                            
+                            </div>                            
                         </form>
                     </div>
-                    <div class="column">
-                        <form action="" style="text-align: center;">
-                            <div class="field">
-                                <label class="label">Upload CBA document</label>
+
+                    <div class="column tender-form">
+                        <form class="real-form" action="" style="text-align: center;">
+                            <div class="field field-tender">
+                                <label class="label-tender">Upload CBA document</label>
                                 <div class="file has-name is-boxed">
-                                    <label class="file-label">
+                                    <label class="file-label" style="width: 100%;">
                                     <input class="file-input" type="file" name="resume" />
-                                    <span class="file-cta">
+                                    <span class="file-cta" >
                                         <span class="file-icon">
                                         <i class="fas fa-upload"></i>
                                         </span>
                                         <span class="file-label"> Choose a file… </span>
                                     </span>
-                                    <span class="file-name"> Screen Shot 2017-07-29 at 15.54.25.png </span>
+                                    <span class="file-name-tender" > Screen Shot 2017-07-29 at 15.54.25.png </span>
                                     </label>
                                 </div>
                             </div>
-                            <div class="field">
-                                <label class="label">Download Template</label>
+                            <div class="field field-tender">
+                                <label class="label-tender">Download Template</label>
                                 <div class="control">
-                                    <a class="button is-info" href="template.docx" download>
+                                    <a style="width: 100%;" class="button is-info" href="template.docx" download>
                                         <span class="icon">
                                             <i class="fas fa-download"></i>
                                         </span>
@@ -188,7 +191,7 @@
                 
               </div>
               <div class="columns" style="display: flex;flex-direction: row-reverse; padding: 30px;">
-                <div class="field is-grouped icon-view">
+                <div class="is-grouped icon-view" style="display: flex; gap:1rem;">
                     <div class="control">
                         <button class="button is-link" type="submit">Submit</button>
                     </div>
