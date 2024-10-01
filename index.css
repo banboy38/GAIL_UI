@@ -1,0 +1,23 @@
+.icon-view {
+    display: flex;
+    justify-content: space-around;
+}
+.broad-view{
+    display: flex;
+    justify-content: space-between;
+}
+
+body[data-theme="light"] {
+    background-color: #ffffff !important;
+}
+body[data-theme="dark"] {
+    background-color: #14161A !important;
+}
+
+html, body{
+    height:100%;
+}
+
+tr{
+    height: 50px;
+}

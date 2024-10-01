@@ -5,24 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
     <link rel="stylesheet" href="https://unpkg.com/bulma@1.0.2/css/bulma.min.css" />
+    <link rel="stylesheet" href="./index.css" />
     <script src="https://kit.fontawesome.com/e6c3e4af0f.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
 
 </head>
-<style>
-    .icon-view {
-        display: flex;
-        justify-content: space-around;
-    }
-    .broad-view{
-        display: flex;
-        justify-content: space-between;
-    }
-</style>
-<body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+<body data-theme="dark">
+    <nav style="padding: 0px 70px 0px 90px;" class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="#">
-                <img src="logo_small-removebg-preview.png" width="112" height="28">
+            <a class="navbar-ite" href="#">
+                <img src="logo_small-removebg-preview.png" width="100px">
             </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
@@ -63,13 +56,18 @@
 
             <div class="navbar-end">
                 <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-primary" href="#">
-                            <strong>Sign up</strong>
-                        </a>
-                        <a class="button is-light" href="#">
-                            Log in
-                        </a>
+                    <div style="display: flex; gap: 1rem; padding: 0px 10px 0px 10px;" class="buttons">
+
+                        <!-- Theme button -->
+                        <button onclick="changeTheme()" class=" button">
+                            <img id="themeToggle" src="./static/mode.png">
+                        </button>
+
+                        <!-- Logout button -->
+                        <button class="button">
+                            <img id="loginButton" src="./static/power-light.png">
+                        </button>
+
                     </div>
                 </div>
             </div>
@@ -78,11 +76,10 @@
 
     <section class="section">
         <div class="container">
-            <div class="box">
+            <div class="box ">
                 <div class="broad-view">
                     <a href=""><i class="fas fa-plus-square"></i></a>
                     <a href="#" onclick="showFilters()"><i class="fas fa-filter"></i></a>
-                    
                 </div>
                 
             </div>
@@ -182,8 +179,8 @@
                         <td>21/6/95</td>
                         <td>
                             <div class="icon-view">
-                                <i class="fas fa-eye"></i>
-                                <i class="fas fa-edit"></i>
+                                <i style="color: #4258FF;" class="fas fa-eye"></i>
+                                <i style="color: #4258FF;" class="fas fa-edit"></i>
                             </div>
 
                         </td>
@@ -197,8 +194,8 @@
                         <td>21/6/95</td>
                         <td>
                             <div class="icon-view">
-                                <i class="fas fa-eye"></i>
-                                <i class="fas fa-edit"></i>
+                                <i style="color: #4258FF;" class="fas fa-eye"></i>
+                                <i style="color: #4258FF;" class="fas fa-edit"></i>
                             </div>
 
                         </td>
@@ -212,8 +209,8 @@
                         <td>21/6/95</td>
                         <td>
                             <div class="icon-view">
-                                <i class="fas fa-eye"></i>
-                                <i class="fas fa-edit"></i>
+                                <i style="color: #4258FF;" class="fas fa-eye"></i>
+                                <i style="color: #4258FF;" class="fas fa-edit"></i>
                             </div>
 
                         </td>
@@ -227,8 +224,8 @@
                         <td>21/6/95</td>
                         <td>
                             <div class="icon-view">
-                                <i class="fas fa-eye"></i>
-                                <i class="fas fa-edit"></i>
+                                <i style="color: #4258FF;" class="fas fa-eye"></i>
+                                <i style="color: #4258FF;" class="fas fa-edit"></i>
                             </div>
 
                         </td>
@@ -261,16 +258,4 @@
         </div>
     </section>
 </body>
-<script>
-    function showFilters(){
-        var filter = document.querySelector('.filters');
-        
-        if(filter.style.display === 'block'){
-            filter.style.display = 'none';
-        }
-        else{
-            filter.style.display = 'block';
-        }
-    }
-</script>
 </html>
