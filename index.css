@@ -21,3 +21,35 @@ html, body{
 tr{
     height: 50px;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Track on hover */
+::-webkit-scrollbar-track:hover {
+    background: #e3e3e3;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    background: #14161a6a;
+    border-radius: 20px 20px 20px 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #14161ad0;
+}
+
+.card-view{
+    display: flex;
+    flex-wrap: wrap;
+}
