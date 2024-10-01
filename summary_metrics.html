@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/e6c3e4af0f.js" crossorigin="anonymous"></script>
     <script src="./script.js"></script>
     <link rel="stylesheet" href="./index.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 </head>
 <style>
@@ -107,76 +108,331 @@
 
     <!-- Main Section -->
     <section style="min-height: 92vh; margin-top: 30px; padding: 0px 92px">
-        <div id="main-section" style="background-color:#25252940; padding: 40px 20px; border-radius: 10px">
-            <!-- Top bar for detailed view/digital assistant-->
+        <div id="main-section" style="background-color:#12121573; padding: 40px 20px; border-radius: 10px">
+            
+            <!-- Top bar for detailed view/digital assistant
             <div class="box summary-top-bar">
 
-                <!-- Detailed View Button -->
+                Detailed View Button
                 <button class="button">
                     Detailed View
                 </button>
 
-                <!-- Digital Assistant Button -->
+                Digital Assistant Button
                 <button class="button">
                     Digital Assistant
                 </button>
                 
-            </div>
+            </div> -->
 
             <!-- Details bar -->
             <div class="box summary-details-bar">
                 
-                <!-- General Details -->
-                <div class="general-details">
-                    <!-- Individual Box -->
-                    <div class="summary-detail-box">
+                <!-- Individual Box -->
+                <div class="summary-detail-box">
 
-                        <div style="font-weight: 700; text-decoration: underline; color: #4257FD;">TENDER NUMBER</div>
-                        <div style=" text-wrap:wrap;">GEM/2023/B/4114110</div>
+                    <div style="font-weight: 700; text-decoration: underline; color: #4257FD;">TENDER NUMBER</div>
+                    <div style=" text-wrap:wrap;">GEM/2023/B/4114110</div>
 
-                    </div>
+                </div>
 
-                    <!-- Individual Box -->
-                    <div class="summary-detail-box">
+                <!-- Individual Box -->
+                <div class="summary-detail-box">
 
-                        <div style="font-weight: 700; text-decoration: underline; color: #4257FD;">MODE OF TENDERING</div>
-                        <div style=" text-wrap:wrap;">GEM/2023/B/4114110</div>
+                    <div style="font-weight: 700; text-decoration: underline; color: #4257FD;">MODE OF TENDERING</div>
+                    <div style=" text-wrap:wrap;">GEM/2023/B/4114110</div>
 
-                    </div>
+                </div>
 
-                    <!-- Individual Box -->
-                    <div class="summary-detail-box">
+                <!-- Individual Box -->
+                <div class="summary-detail-box">
 
-                        <div style="font-weight: 700; text-decoration: underline; color: #4257FD;">BID DUE DATE</div>
-                        <div style=" text-wrap:wrap;">GEM/2023/B/4114110</div>
+                    <div style="font-weight: 700; text-decoration: underline; color: #4257FD;">BID DUE DATE</div>
+                    <div style=" text-wrap:wrap;">GEM/2023/B/4114110</div>
 
-                    </div>
+                </div>
 
-                    <!-- Individual Box -->
-                    <div class="summary-detail-box">
+                <!-- Individual Box -->
+                <div class="summary-detail-box">
 
-                        <div style="font-weight: 700; text-decoration: underline; color: #4257FD;">DESCRIPTION</div>
-                        <div style=" text-wrap:wrap;">Per Unit Ex-Works Price of Wash-Oil incl. GST in Rs. /MT</div>
+                    <div style="font-weight: 700; text-decoration: underline; color: #4257FD;">DESCRIPTION</div>
+                    <div style=" text-wrap:wrap;">Per Unit Ex-Works Price of Wash-Oil incl. GST in Rs. /MT</div>
 
-                    </div>
                 </div>
 
                 <!-- Number of Bidders Box -->
-                <div class="summary-bidders-box">
+                <div class="summary-detail-box">
 
                     <div style="font-weight: 700; text-decoration: underline; color: #4257FD;">Number of Bidders</div>
-                    <div style="font-size: larger; text-wrap:wrap;">Per Unit Ex-Works Price of Wash-Oil incl. GST in Rs. /MT</div>
+                    <div style="font-size:xx-large; font-weight:800;">2</div>
 
                 </div>
                 
             </div>
 
             <!-- Charts -->
-            <div>
-            
+            <div class="summary-charts box">
+                
+                <!-- Chart - Net Worth -->
+                <div class="chart-container">
+                    <div style="font-weight: 700; font-size:small">Net Worth</div>
+                    <canvas id="net-worth" style="width:370px; height: 90%"></canvas>
+                </div>
+
+                <!-- Chart - Average Turnover -->
+                <div class="chart-container">
+                    <div style="font-weight: 700; font-size:small">Average Turnover</div>
+                    <canvas id="average-turnover" style="width:370px; height: 90%"></canvas>
+                </div>
+
+                <!-- Chart - Working Capital -->
+                <div class="chart-container">
+                    <div style="font-weight: 700; font-size:small">Working Capital</div>
+                    <canvas id="working-capital" style="width:370px; height: 90%"></canvas>
+                </div>
+
             </div>
+
+            <!-- Ratings Section -->
+            <table class="table" style="width:100%;">
+                <thead>
+                    <th class="summary-table-header">Vendor Name</th>
+                    <th class="summary-table-header">Business Share</th>
+                    <th class="summary-table-header">Price Point</th>
+                    <th class="summary-table-header">Financial Stability</th>
+                    <th class="summary-table-header">Delivery Performance</th>
+                    <th class="summary-table-header">Quality</th>
+                    <th class="summary-table-header">Years In Business</th>
+                    <th class="summary-table-header">Overall</th>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td class="summary-table-data">
+                            ${Name}
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="summary-table-data">
+                            ${Name}
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="summary-table-data">
+                            ${Name}
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="summary-table-data">
+                            ${Name}
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                        <td class="summary-table-data">
+                            <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
     </section>
+
+    <!-- Chart fetching scripts -->
+    <script>
+        const xValues = [50,60,70,80,90,100,110,120,130,140,150];
+        const yValues = [7,8,8,9,9,9,10,11,14,14,15];
+        
+        new Chart("net-worth", {
+          type: "line",
+          data: {
+            labels: ['', 'January', 'February', 'March', 'April', 'May', 'June', ''],
+            datasets: [
+              {
+                type: 'bar',
+                label: 'Sales',
+                data: [0, 30, 50, 70, 40, 60, 90, 0],
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+              },
+              {
+                type: 'line',
+                label: 'Revenue',
+                data: [20, 20, 20, 20, 20, 20, 20, 20],
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 2,
+                fill: false,
+              },
+            ],
+          },
+          options: {
+            legend: {
+                display: true,
+                labels: {
+                    usePointStyle: true, // Optional, changes the point style to a circle
+                  },
+            },
+            scales: {
+              yAxes: [{ticks: {min: 0}}],
+            }
+          }
+        });
+
+        new Chart("average-turnover", {
+            type: "line",
+            data: {
+              labels: ['', 'January', 'February', 'March', 'April', 'May', 'June', ''],
+              datasets: [
+                {
+                  type: 'bar',
+                  label: 'Sales',
+                  data: [0, 30, 50, 70, 40, 60, 90, 0],
+                  backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                  borderColor: 'rgba(54, 162, 235, 1)',
+                  borderWidth: 1,
+                },
+                {
+                  type: 'line',
+                  label: 'Revenue',
+                  data: [20, 20, 20, 20, 20, 20, 20, 20],
+                  borderColor: 'rgba(255, 99, 132, 1)',
+                  borderWidth: 2,
+                  fill: false,
+                },
+              ],
+            },
+            options: {
+              legend: {
+                  display: true,
+                  labels: {
+                    usePointStyle: true, // Optional, changes the point style to a circle
+                  },
+              },
+              scales: {
+                yAxes: [{ticks: {min: 0}}],
+              }
+            }
+          });
+
+          new Chart("working-capital", {
+            type: "line",
+            data: {
+              labels: ['', 'January', 'February', 'March', 'April', 'May', 'June', '    '],
+              datasets: [
+                {
+                  type: 'bar',
+                  label: 'Sales',
+                  data: [0, 30, 50, 70, 40, 60, 90, 0],
+                  backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                  borderColor: 'rgba(54, 162, 235, 1)',
+                  borderWidth: 1,
+                },
+                {
+                  type: 'line',
+                  label: 'Revenue',
+                  data: [20, 20, 20, 20, 20, 20, 20, 20],
+                  borderColor: 'rgba(255, 99, 132, 1)',
+                  borderWidth: 2,
+                  fill: false,
+                },
+              ],
+            },
+            options: {
+              legend: {
+                  display: true,
+                  labels: {
+                    usePointStyle: true, // Optional, changes the point style to a circle
+                  },
+              },
+              scales: {
+                yAxes: [{ticks: {min: 0}}],
+              }
+            }
+          });
+    </script>
 </body>
+
 </html>

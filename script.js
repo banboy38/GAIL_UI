@@ -17,7 +17,7 @@ function changeTheme(){
     // document.getElementById("loginButton").setAttribute("src", currentTheme === "light" ? "./static/power-light.png" : "./static/power-dark.png");
 
     try{
-        document.getElementById("main-section").style.backgroundColor = currentTheme === "light"?"#25252940":"#d7d7ed40"
+        document.getElementById("main-section").style.backgroundColor = currentTheme === "light"?"#12121573":"#d7d7ed40"
     }
     catch(e){
         console.log(e)        
