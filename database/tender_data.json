@@ -1,0 +1,25 @@
+{
+    "tenders": {
+        "1": {
+            "tender_id": "1",
+            "tender_name": "Construction Project A",
+            "start_date": "2023-10-01",
+            "end_date": "2023-12-31",
+            "status": "Open"
+        },
+        "2": {
+            "tender_id": "2",
+            "tender_name": "IT Infrastructure Upgrade",
+            "start_date": "2023-11-01",
+            "end_date": "2024-01-31",
+            "status": "Closed"
+        },
+        "3": {
+            "tender_id": "3",
+            "tender_name": "Office Supplies Procurement",
+            "start_date": "2023-09-15",
+            "end_date": "2023-10-15",
+            "status": "Awarded"
+        }
+    }
+}

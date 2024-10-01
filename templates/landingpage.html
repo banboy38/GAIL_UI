@@ -1,0 +1,144 @@
+{% extends 'nav_template.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="box ">
+        <div class="broad-view">
+            <a href=""><i class="fas fa-plus-square"></i></a>
+            <a href="#" onclick="showFilters()"><i class="fas fa-filter"></i></a>
+        </div>
+        
+    </div>
+    <div class="box filters" style="display: none;">
+        <form action="/" method="post">
+            <div class="columns">
+                <div class="column">
+                    <div class="field">
+                        <label class="label">Tender Name</label>
+                        <div class="control">
+                            <input name="tender_name" class="input" type="text" placeholder="Enter Tender Name">
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="field">
+                        <label class="label">Tender ID</label>
+                        <div class="control">
+                            <input name="tender_id" class="input" type="text" placeholder="Enter Tender ID">
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="field">
+                        <label class="label">Processing Status</label>
+                        <div class="control">
+                            <div class="select">
+                                <select name="tender_status">
+                                    <option>All</option>
+                                    <option>Completed</option>
+                                    <option>Pending</option>
+                                    <option>In Progress</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="field">
+                        <label class="label">Upload Date</label>
+                        <div class="control">
+                            <input name="upload_date" class="input" type="date">
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="field">
+                        <label class="label">Last Modified Date</label>
+                        <div class="control">
+                            <input  name="modeified_date" class="input" type="date">
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary">Apply Filters</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+            
+            
+            
+            
+            
+            
+        
+            
+    </div>
+    <div class="tender-table">
+
+    
+        <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+            <thead>
+            <tr>
+                <th>Index</th>
+                <th>Tender Name</th>
+                <th>Tender ID</th>
+                <th>Status</th>
+                <th>Upload Date</th>
+                <th>Last Modified Date</th>
+                <th>More...</th>
+            </tr>
+            </thead>
+            
+            <tbody>
+            {%for tender in tenders%}
+            <tr>
+                <th>{{loop.index}}</th>
+                <td>{{tender.tender_name}}</td>
+                <td>{{tender.tender_id}}</td>
+                <td>{{tender.status}}</td>
+                <td>{{tender.start_date}}</td>
+                <td>{{tender.end_date}}</td>
+                <td>
+                    <div class="icon-view">
+                        <i style="color: #4258FF;" class="fas fa-eye"></i>
+                        <i style="color: #4258FF;" class="fas fa-edit"></i>
+                    </div>
+
+                </td>
+            </tr>
+            {%endfor%}
+            
+            </tbody>
+        </table>
+        <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+            <a href="#" class="pagination-previous">Previous</a>
+            <a href="#" class="pagination-next">Next page</a>
+            <ul class="pagination-list">
+            <li><a href="#" class="pagination-link" aria-label="Goto page 1">1</a></li>
+            <li><span class="pagination-ellipsis">&hellip;</span></li>
+            <li><a href="#" class="pagination-link" aria-label="Goto page 45">45</a></li>
+            <li>
+                <a
+                class="pagination-link is-current"
+                aria-label="Page 46"
+                aria-current="page"
+                >46</a
+                >
+            </li>
+            <li><a href="#" class="pagination-link" aria-label="Goto page 47">47</a></li>
+            <li><span class="pagination-ellipsis">&hellip;</span></li>
+            <li><a href="#" class="pagination-link" aria-label="Goto page 86">86</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+{% endblock %}
