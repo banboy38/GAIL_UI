@@ -16,5 +16,13 @@ function changeTheme(){
     document.getElementById("themeToggle").setAttribute("src", currentTheme === "light" ? "./static/mode.png" : "./static/mode (1).png");
     // document.getElementById("loginButton").setAttribute("src", currentTheme === "light" ? "./static/power-light.png" : "./static/power-dark.png");
 
+    try{
+        document.getElementById("main-section").style.backgroundColor = currentTheme === "light"?"#25252940":"#d7d7ed40"
+    }
+    catch(e){
+        console.log(e)        
+    }
     document.body.setAttribute("data-theme", newTheme);
+
+
 }

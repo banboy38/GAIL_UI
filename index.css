@@ -103,3 +103,52 @@ tr{
 .label-tender{
     font-weight: 700;
 }
+
+.summary-top-bar{
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.summary-details-bar{
+    display: flex;
+    gap: 1rem;
+
+    align-items: center;
+}
+
+.summary-detail-box{
+    width: 22%;
+    min-height: 5rem;
+    border: solid 1px  #898989;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 4px 10px;
+    gap:0.2rem;
+}
+
+.general-details{
+    display: flex;
+    gap: 1rem;
+
+    min-height: 85%;
+}
+
+.summary-bidders-box{
+    width: 18%;
+    min-height: 10rem;
+    border: solid 1px  #898989;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 4px 10px;
+    margin-left: auto;
+    gap:0.2rem;
+
+    box-shadow: 5px 5px 10px  rgba(128, 128, 128, 0.318);
+}
