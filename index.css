@@ -52,4 +52,54 @@ tr{
 .card-view{
     display: flex;
     flex-wrap: wrap;
+    overflow-x: hidden; 
+    max-height: 800px;
+    padding: 5px 20px 5px 20px;
+}
+
+.tender-form-container{
+    display: flex; justify-content: space-between; width: 100%;
+    gap:2rem;
+}
+
+.tender-form{
+    /* background-color: red; */
+}
+
+.real-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.field-tender{
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    width: 70%;
+}
+
+.file{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-name-tender{
+    border: solid 1px;
+    border-color: #e3e3e3;
+    height: 2rem;
+
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.label-tender{
+    font-weight: 700;
 }
