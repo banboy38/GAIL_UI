@@ -14,7 +14,7 @@ function changeTheme(){
     const newTheme = currentTheme === "light" ? "dark" : "light";
 
     document.getElementById("themeToggle").setAttribute("src", currentTheme === "light" ? "./static/mode.png" : "./static/mode (1).png");
-    document.getElementById("loginButton").setAttribute("src", currentTheme === "light" ? "./static/power-light.png" : "./static/power-dark.png");
+    // document.getElementById("loginButton").setAttribute("src", currentTheme === "light" ? "./static/power-light.png" : "./static/power-dark.png");
 
     document.body.setAttribute("data-theme", newTheme);
 }
