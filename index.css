@@ -104,6 +104,12 @@ tr{
     font-weight: 700;
 }
 
+.summary-main-section{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
 .summary-top-bar{
     display: flex;
     gap: 1rem;
@@ -172,7 +178,11 @@ tr{
 }
 
 .summary-table-data{
+    text-align: center;
+    /* width: 100%; */
     /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
 }
 
 .summary-table-header{
