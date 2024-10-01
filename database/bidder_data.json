@@ -1,0 +1,58 @@
+{
+    "bidders": {
+        "1": {
+            "bidder_id": "1",
+            "bidder_name": "ABC Constructions",
+            "tender_id": "1",
+            "documents": [
+                "document1.pdf",
+                "document2.pdf"
+            ]
+        },
+        "2": {
+            "bidder_id": "2",
+            "bidder_name": "XYZ IT Solutions",
+            "tender_id": "2",
+            "documents": [
+                "document3.pdf",
+                "document4.pdf"
+            ]
+        },
+        "3": {
+            "bidder_id": "3",
+            "bidder_name": "Office Supplies Co.",
+            "tender_id": "3",
+            "documents": [
+                "document5.pdf",
+                "document6.pdf"
+            ]
+        },
+        "4": {
+            "bidder_id": "4",
+            "bidder_name": "Construction Experts",
+            "tender_id": "1",
+            "documents": [
+                "document7.pdf",
+                "document8.pdf"
+            ]
+        },
+        "5": {
+            "bidder_id": "5",
+            "bidder_name": "Tech Innovators",
+            "tender_id": "2",
+            "documents": [
+                "document9.pdf",
+                "document10.pdf"
+            ]
+        },
+        "6": {
+            "bidder_id": "6",
+            "bidder_name": "Supply Chain Inc.",
+            "tender_id": "3",
+            "documents": [
+                "document11.pdf",
+                "document12.pdf"
+            ]
+        }
+    }
+}
