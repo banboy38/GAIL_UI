@@ -1,0 +1,55 @@
+{
+  "name": "Annual Exposure",
+  "Min": 2,
+  "Most_Likely": 5,
+  "Max": 8,
+  "lambda": 8,
+  "children": [
+    {
+      "name": "Loss Event Frequency",
+      "Min": 2,
+      "Most_Likely": 5,
+      "Max": 8,
+      "lambda": 8,
+      "children": [
+        {
+          "name": "Threat Event Frequency",
+          "Min": 2,
+          "Most_Likely": 5,
+          "Max": 8,
+          "lambda": 8
+        },
+        {
+          "name": "Susceptibility",
+          "Min": 2,
+          "Most_Likely": 5,
+          "Max": 8,
+          "lambda": 8
+        }
+      ]
+    },
+    {
+      "name": "Loss Magnitude",
+      "Min": 2,
+      "Most_Likely": 5,
+      "Max": 8,
+      "lambda": 8,
+      "children": [
+        {
+          "name": "Primary Loss",
+          "Min": 2,
+          "Most_Likely": 5,
+          "Max": 8,
+          "lambda": 8
+        },
+        {
+          "name": "Secondary Loss",
+          "Min": 2,
+          "Most_Likely": 5,
+          "Max": 8,
+          "lambda": 8
+        }
+      ]
+    }
+  ]
+}

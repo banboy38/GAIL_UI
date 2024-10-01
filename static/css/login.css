@@ -1,0 +1,78 @@
+* {
+    font-family: 'Nunito Sans', sans-serif;
+  }
+  
+  :root {
+    --shadowDark: #D9DDE6;
+    --background: #E4E9F2;
+    --shadowLight: #EFF5FE;
+  }
+  
+  body {
+    background: var(--background);
+  }
+  
+  .hero-body {
+    justify-content: center;
+  }
+  
+  .login {
+    border-radius: 25px;
+    padding: 1.5rem;
+    box-shadow: 8px 8px 15px var(--shadowDark), -8px -8px 15px var(--shadowLight);
+  }
+  .signup{
+    border-radius: 25px;
+    padding: 1.5rem;
+    box-shadow: 8px 8px 15px var(--shadowDark), -8px -8px 15px var(--shadowLight);
+    width: 50%;
+  }
+  
+  input {
+    background: var(--shadowDark) !important;
+    color: black;
+  }
+select{
+    background: var(--shadowDark) !important;
+    color: black;
+    font-size: small;
+    
+  }
+.select{
+    width: 100%;
+    color: #888;
+}
+.input.is-rounded {
+    color: black;
+}
+
+
+  a {
+    font-weight: 600;
+  }
+
+  input::placeholder {
+    color: #888; /* Adjust this color to ensure visibility */
+    opacity: 1; /* Ensure the placeholder is fully opaque */
+}
+
+.label{
+    color: black;
+    display: flex;
+    padding: 0 10px;
+}
+
+select option {
+    color: black;
+}
+.textarea{
+    background-color: var(--shadowDark) !important;
+    color: black !important;
+}
+.file-name{
+    color: black;
+}
+.file-cta{
+    background-color: var(--shadowDark) !important;
+    color: black;
+}
