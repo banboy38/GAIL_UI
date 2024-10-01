@@ -60,12 +60,12 @@
 
                         <!-- Theme button -->
                         <button onclick="changeTheme()" class=" button">
-                            <img id="themeToggle" src="./static/mode.png">
+                            <img id="themeToggle" src="{{ url_for('static', filename='mode.png') }}">
                         </button>
 
                         <!-- Logout button -->
-                        <button class="button">
-                            <img id="loginButton" src="./static/power-light.png">
+                        <button style="width: 3.5rem; height:2.75rem;" class="button">
+                            <i class="fas fa-power-off"></i>
                         </button>
 
                     </div>
