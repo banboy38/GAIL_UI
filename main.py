@@ -7,6 +7,7 @@ import os
 from queue import Queue, Empty
 from threading import Thread
 
+from bidder_pipeline import bid_eval_doc_processor
 from time import sleep
 app = flask.Flask(__name__)
 app.secret_key="gailpockey"
@@ -24,7 +25,19 @@ def game_loop():
     while True:
         try:
             command = commands.get_nowait()
-            print(command)
+            for files in command['pdf_file']:
+                bidder=bidders_json.read_json(DB_DETAILS['bidders'])['bidders'][command['bidder_id']]
+                bidder['status'][command['pdf_file']]="Processing"
+                bidders_json.update_json(command['bidder_id'], bidder, DB_DETAILS['bidders'])
+                out=bid_eval_doc_processor({
+                    "cba_path": command['cba_path'],
+                    "pdf_file": files,
+                    "bidder_name": command['bidder_name'],
+                    "bidder_id": command['bidder_id'],
+                    "bidder_path": command['bidder_path']
+                })
+                bidder['status'][command['pdf_file']]="Completed"
+                bidders_json.update_json(command['bidder_id'], bidder, DB_DETAILS['bidders'])
         except Empty:
             pass
         sleep(5)  # TODO poll other things
@@ -78,10 +91,19 @@ def bidders(tender_id):
             "bidder_id": bidder_id,
             "bidder_name": bidder_name,
             "tender_id": tender_id,
-            "documents": saved_files
+            "documents": saved_files,
+            "status":{
+               f: 'Queued' for f in saved_files
+            }
         }
         print(bidder_data)
         bidders_json.update_json(bidder_id, bidder_data, DB_DETAILS['bidders'])
+        
+        commands.put_nowait({"cba_path":  os.path.join(DATA_UPLOAD_FOLDER,tender_id,'cba',"CBA.xlsx"),
+                            "pdf_file": saved_files,
+                            "bidder_name": bidder_name,
+                            "bidder_id": bidder_id,
+                            "bidder_path": os.path.join(DATA_UPLOAD_FOLDER,tender_id,'bidders')})
     
     
     all_bidders=bidders_json.read_json(DB_DETAILS['bidders'])['bidders']

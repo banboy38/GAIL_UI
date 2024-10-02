@@ -36,5 +36,8 @@ all_config={
     "doc_intelligence":doc_intelligence,
     "embedding":embedding
 }
+ENV="MAC"
+
+
 
 print("Configurations Loaded!!!")

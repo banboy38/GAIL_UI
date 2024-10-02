@@ -7,7 +7,7 @@ from pdf2image import convert_from_path
 from langchain_core.documents import Document
 
 
-from configarations.config import all_config
+from configarations.config import all_config,ENV
 from pathlib import Path
 
 def get_field_info(cba_path):
@@ -32,7 +32,10 @@ def create_and_save_imgs(pdf_file):
         ##os.makedirs(folder_path)
     else:
         os.makedirs(folder_path)
-    IMGS=convert_from_path(pdf_file,poppler_path="TBD/poppler-24.07.0/Library/bin")
+    if ENV=="MAC":
+        IMGS=convert_from_path(pdf_file)
+    else:
+        IMGS=convert_from_path(pdf_file,poppler_path="TBD/poppler-24.07.0/Library/bin")
     all_imgs=[]
     for idx,img in enumerate(IMGS):
         file_name=f"{folder_path}/img_{idx}.jpg"
