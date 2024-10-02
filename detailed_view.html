@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bidder Documents</title>
+    <link rel="stylesheet" href="https://unpkg.com/bulma@1.0.2/css/bulma.min.css" />
+    <script src="https://kit.fontawesome.com/e6c3e4af0f.js" crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./index.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+</head>
+<style>
+    .view-form{
+        display: flex;
+        justify-content: center;
+    }
+    .icon-view{
+        display: flex;
+        justify-content: space-around !important;
+    }
+</style>
+<body data-theme="dark">
+
+    <!-- NavBar -->
+    <nav style="padding: 0px 70px 0px 90px;" class="navbar" role="navigation" aria-label="main navigation">
+        
+        <!-- Logo -->
+        <div class="navbar-brand">
+            <a class="navbar-ite" href="#">
+                <img src="./static/imgs/logo_small-removebg-preview.png" width="100px">
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <!-- Quicklinks -->
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+
+                <!-- Home -->
+                <a class="navbar-item" href="#">
+                    Home
+                </a>
+
+                <!-- Documentation -->
+                <a class="navbar-item" href="#">
+                    Documentation
+                </a>
+
+                <!-- More Links -->
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link" href="#">
+                        More
+                    </a>
+                    <div class="navbar-dropdown">
+
+                        <!-- ABout -->
+                        <a class="navbar-item" href="#">
+                            About
+                        </a>
+
+                        <!-- Jobs -->
+                        <a class="navbar-item" href="#">
+                            Jobs
+                        </a>
+
+                        <!-- Contact -->
+                        <a class="navbar-item" href="#">
+                            Contact
+                        </a>
+
+                        <!-- Seperator -->
+                        <hr class="navbar-divider">
+
+                        <!-- Report Issue -->
+                        <a class="navbar-item" href="#">
+                            Report an issue
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div style="display: flex; gap: 1rem; padding: 0px 10px 0px 10px;" class="buttons">
+
+                        <!-- Theme button -->
+                        <button onclick="changeTheme()" class=" button">
+                            <img id="themeToggle" src="./static/mode.png">
+                        </button>
+
+                        <!-- Logout button -->
+                        <button style="width: 3.5rem; height:2.75rem;" class="button">
+                            <i class="fas fa-power-off"></i>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Section -->
+    <section style="min-height: 92vh; margin-top: 30px; padding: 0px 92px">
+        
+        <div id="main-section" class="detailed-main-section" style="background-color:#12121573;">
+            
+            <!-- Filter Section -->
+            <div class="box detailed-filter" style="margin: 0px;">
+
+                <!-- Heading -->
+                <div style="font-weight: 700;">
+                    Parameter Filters
+                </div>
+                
+                <!-- Details Filter -->
+                <form id="details" onchange="filterDetails()" style="display: flex; flex-direction:column; gap:0.625rem">
+                    <label>
+                        <input id="BEC_Financial" name="BEC_Financial" type="checkbox"/><span>BEC Financial</span>
+                    </label>
+                    <label>
+                        <input id="Format_F5" name="Format_F5" type="checkbox"/><span>Format F5</span>
+                    </label>
+                    <label>
+                        <input id="Format_F6" name="Format_F6" type="checkbox"/><span>Format F6</span>
+                    </label>
+                    <label>
+                        <input id="Format_F7" name="Format_F7" type="checkbox"/><span>Format F7</span>
+                    </label>
+                    <label>
+                        <input id="Format_F8" name="Format_F8" type="checkbox"/><span>Format F8</span>
+                    </label>
+                    <label>
+                        <input id="Format_1" name="Format_1" type="checkbox"/><span>Format 1</span>
+                    </label>
+                    <label>
+                        <input id="Integrity_Pact" name="Integrity_Pact" type="checkbox"/><span>Integrity Pact</span>
+                    </label>
+                    <label>
+                        <input id="Particulars" name="Particulars" type="checkbox"/><span>Particulars</span>
+                    </label>
+                </form>
+            </div>
+
+            <!-- Table Section -->
+            <div class="box detailed-table">    
+                
+                <!-- Heading -->
+                <div style="font-weight: 700;">
+                    Commercial Bid Analysis - Comparison
+                </div>
+
+                <!-- Table -->
+                <table class="table" id="detailedTable">
+                    <thead>
+                        <th>Type of Parameter</th>
+                        <th>Parameter</th>
+                        <th>NRL</th>
+                        <th>HPCL</th>
+                    </thead>
+
+                    <tbody id="detailedTableBody">
+
+                        <tr>
+                            <td>Particulars</td>
+                            <td>Name of Bidder</td>
+                            <td>NUMALIGARH REFINERY LIMITED</td>
+                            <td>Hindustan Petroleum Corporation Limited</td>
+                        </tr>
+
+                        <tr>
+                            <td>BEC Financial</td>
+                            <td>Name of Bidder</td>
+                            <td>NUMALIGARH REFINERY LIMITED</td>
+                            <td>Hindustan Petroleum Corporation Limited</td>
+                        </tr>
+
+                        <tr>
+                            <td>Format 1</td>
+                            <td>Name of Bidder</td>
+                            <td>NUMALIGARH REFINERY LIMITED</td>
+                            <td>Hindustan Petroleum Corporation Limited</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                
+            </div>
+            
+        </div>
+
+    </section>
+
+    <!-- Scripts -->
+    <script>
+
+        const filters = ['BEC_Financial', 'Format_F5', 'Format_F6', 'Format_F7', 'Format_F8', 'Format_1',, 'Integrity_Pact', 'Particulars']
+
+        const data = [
+            ['Particulars', "Name of Bidder", "NUMALIGARH REFINERY LIMITED", 'Hindustan Petroleum Corporation Limited'],
+            ['BEC Financial', "Name of Bidder", "NUMALIGARH REFINERY LIMITED", 'Hindustan Petroleum Corporation Limited'],
+            ['Format 1', "Name of Bidder", "NUMALIGARH REFINERY LIMITED", 'Hindustan Petroleum Corporation Limited'],            
+        ]
+
+        
+        function filterDetails(){
+            
+            let body = document.getElementById("detailedTableBody")
+            while (body.firstChild) {
+                body.removeChild(body.firstChild);
+            }
+            
+            let flag = false
+
+            for(let item of data){
+                
+                if(eval(`document.getElementById("details").${item[0].split(" ").join("_")}.checked`) === true){
+
+                    flag = true
+
+                    let row = document.createElement('tr')
+
+                    row0 = document.createElement('td')
+                    row0.innerHTML = item[0]
+                    row.appendChild(row0)
+
+                    row1 = document.createElement('td')
+                    row1.innerHTML = item[1]
+                    row.appendChild(row1)
+
+                    row2 = document.createElement('td')
+                    row2.innerHTML = item[2]
+                    row.appendChild(row2)
+
+                    row3 = document.createElement('td')
+                    row3.innerHTML = item[3]
+                    row.appendChild(row3)
+
+                    body.appendChild(row)
+                }
+
+            }
+
+            if(flag === false){
+                for(let item of data){
+
+                    let row = document.createElement('tr')
+
+                    row0 = document.createElement('td')
+                    row0.innerHTML = item[0]
+                    row.appendChild(row0)
+
+                    row1 = document.createElement('td')
+                    row1.innerHTML = item[1]
+                    row.appendChild(row1)
+
+                    row2 = document.createElement('td')
+                    row2.innerHTML = item[2]
+                    row.appendChild(row2)
+
+                    row3 = document.createElement('td')
+                    row3.innerHTML = item[3]
+                    row.appendChild(row3)
+
+                    body.appendChild(row)                
+    
+                }
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>
