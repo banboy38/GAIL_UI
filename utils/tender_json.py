@@ -18,8 +18,12 @@ def write_json(data, file_path):
 def update_json(tender_id, update_data, file_path):
     """Updates a specific tender in the JSON file."""
     data = read_json(file_path)
-    if 'tenders' in data and tender_id in data['tenders']:
-        data['tenders'][tender_id].update(update_data)
+    if 'tenders' in data:
+        if tender_id in data['tenders']:
+            data['tenders'][tender_id].update(update_data)
+            
+        else:
+            data['tenders'][tender_id]=update_data
         write_json(data, file_path)
     else:
         print(f"Tender ID {tender_id} not found.")

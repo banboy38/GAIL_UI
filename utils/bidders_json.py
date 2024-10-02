@@ -14,8 +14,15 @@ def write_json(file_path, data):
     with open(file_path, 'w') as file:
         json.dump(data, file, indent=4)
 
-def update_json(file_path, key, value):
-    """Updates a specific key in the JSON file with the provided value."""
+def update_json(bidder_id, update_data, file_path):
+    """Updates a specific tender in the JSON file."""
     data = read_json(file_path)
-    data[key] = value
-    write_json(file_path, data)
+    if 'bidders' in data:
+        if bidder_id in data['bidders']:
+            data['bidders'][bidder_id].update(update_data)
+            
+        else:
+            data['bidders'][bidder_id]=update_data
+        write_json(file_path,data)
+    else:
+        print(f"Bidder ID {bidder_id} not found.")

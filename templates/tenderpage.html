@@ -1,0 +1,159 @@
+{% extends 'nav_template.html' %}
+
+{% block content %}
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="#">Bulma</a></li>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Components</a></li>
+            <li class="is-active"><a href="#" aria-current="page">Breadcrumb</a></li>
+        </ul>
+        </nav>
+        <h1 class="subtitle">
+            Step 1: Upload tender document and CBA File
+        </h1>
+        
+    <div class="box view-form">
+        <div class="columns tender-form-container">
+            <input class="input" type="text" name="tender_id" id="tender_id" value="{{tender_id}}" readonly style="display: none;">
+
+            <div class="column tender-form" >
+                <form class="real-form" action="" style="text-align: center; ">
+                    <div class="field field-tender">
+                        <label class="label-tender">Upload Tender document</label>
+
+                        <div class="file has-name is-boxed">
+                            <label class="file-label" style="width: 100%;">
+                                <input class="file-input" type="file" name="tender_file"  required multiple/>
+                                
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                    <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label"> Choose a file… </span>
+                                </span>
+                                <span class="file-name-tender"> Screen Shot 2017-07-29 at 15.54.25.png </span>
+                            </label>
+                        </div>
+                        
+                    </div>
+                    <div class="field field-tender">
+                        <label class="label-tender">Tender Name</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" placeholder="Enter tender name" name="tenderName" required>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-file-alt"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field field-tender">
+                        <label class="label-tender">Tender Number</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" placeholder="Enter tender number" name="tenderNumber" required>
+                            <span class="icon is-small is-left">
+                                <i class="far fa-id-card"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field field-tender">
+                        <label class="label-tender">Issue Date</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="date" name="issueDate" required>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-calendar-alt"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field field-tender">
+                        <label class="label-tender">Last Submission Date</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="date" name="submissionDate" required>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-calendar-alt"></i>
+                            </span>
+                        </div>
+                    </div>                            
+                </form>
+            </div>
+
+            <div class="column tender-form">
+                <form class="real-form" action="" style="text-align: center;">
+                    <div class="field field-tender">
+                        <label class="label-tender">Upload CBA document</label>
+                        <div class="file has-name is-boxed">
+                            <label class="file-label" style="width: 100%;">
+                            <input class="file-input" type="file" name="resume" />
+                            <span class="file-cta" >
+                                <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                                </span>
+                                <span class="file-label"> Choose a file… </span>
+                            </span>
+                            <span class="file-name-tender" > Screen Shot 2017-07-29 at 15.54.25.png </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field field-tender">
+                        <label class="label-tender">Download Template</label>
+                        <div class="control">
+                            <a style="width: 100%;" class="button is-info" href="template.docx" download>
+                                <span class="icon">
+                                    <i class="fas fa-download"></i>
+                                </span>
+                                <span>Download Template</span>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            
+        </div>
+        
+        
+        </div>
+        <div class="columns" style="display: flex;flex-direction: row-reverse; padding: 30px;">
+        <div class="is-grouped icon-view" style="display: flex; gap:1rem;">
+            <div class="control">
+                <button class="button is-link" onclick="handleFormSubmit()" type="submit">Submit</button>
+            </div>
+            <div class="control">
+                <button class="button is-light" type="reset">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function handleFormSubmit() {
+
+            const formData = new FormData();
+            formData.append('tender_id', document.getElementById('tender_id').value);
+            const tenderFiles = document.querySelector('input[name="tender_file"]').files;
+            for (let i = 0; i < tenderFiles.length; i++) {
+                formData.append('tender_files[]', tenderFiles[i]);
+            }
+            formData.append('tender_name', document.querySelector('input[name="tenderName"]').value);
+            formData.append('tender_number', document.querySelector('input[name="tenderNumber"]').value);
+            formData.append('issue_date', document.querySelector('input[name="issueDate"]').value);
+            formData.append('submission_date', document.querySelector('input[name="submissionDate"]').value);
+            formData.append('cba_file', document.querySelector('input[name="resume"]').files[0]);
+
+            fetch('/upload_tender_documents/', {
+            method: 'POST',
+            body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+            console.log('Success:', data);
+            // Handle success response
+            window.location.href = '/bidders/'+data['uid']; // Replace with the actual URL of the next page
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+            // Handle error response
+            });
+        }
+
+    </script>
+    
+
+{% endblock %}

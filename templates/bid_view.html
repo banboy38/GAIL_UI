@@ -1,0 +1,73 @@
+{% extends 'nav_template.html' %}
+
+{% block content %}
+<nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="#">Bulma</a></li>
+      <li><a href="#">Documentation</a></li>
+      <li><a href="#">Components</a></li>
+      <li class="is-active"><a href="#" aria-current="page">Breadcrumb</a></li>
+    </ul>
+</nav>
+
+<h1 class="title">Bidder Name</h1>
+<hr>
+<h1 class="subtitle">Document Processing Status</h1>
+
+<div class="box">
+    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+            <tr>
+                <th>Document name</th>
+                <th>Processing Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for link in bid%}
+            <tr>
+                <td>{{link}}</td>
+                <td>Processing</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    
+    </table>
+</div>
+
+
+<h1 class="subtitle">Key Data Feilds Extraction <span><i class="fas fa-download"></i></span></h1>
+
+<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Field Name</th>
+            <th>Field Value</th>
+            <th>Context</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+    <tr>
+        <td>Category 1</td>
+        <td>Field Name 1</td>
+        <td>Field Value 1</td>
+        <td>Context 1</td>
+    </tr>
+    <tr>
+        <td>Category 2</td>
+        <td>Field Name 2</td>
+        <td>Field Value 2</td>
+        <td>Context 2</td>
+    </tr>
+    <tr>
+        <td>Category 3</td>
+        <td>Field Name 3</td>
+        <td>Field Value 3</td>
+        <td>Context 3</td>
+    </tr>
+    </tbody>
+</table>
+
+
+{% endblock %}

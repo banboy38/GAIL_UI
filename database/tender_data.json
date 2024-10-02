@@ -3,24 +3,43 @@
         "1": {
             "tender_id": "1",
             "tender_name": "Construction Project A",
-            "start_date": "2023-10-01",
-            "end_date": "2023-12-31",
+            "issue_date": "2023-10-01",
+            "submission_date": "2023-12-31",
             "status": "Open"
-            
         },
         "2": {
             "tender_id": "2",
             "tender_name": "IT Infrastructure Upgrade",
-            "start_date": "2023-11-01",
-            "end_date": "2024-01-31",
+            "issue_date": "2023-11-01",
+            "submission_date": "2024-01-31",
             "status": "Closed"
         },
         "3": {
             "tender_id": "3",
             "tender_name": "Office Supplies Procurement",
-            "start_date": "2023-09-15",
-            "end_date": "2023-10-15",
+            "issue_date": "2023-09-15",
+            "submission_date": "2023-10-15",
             "status": "Awarded"
+        },
+        "0a176703-ff41-49b5-9889-7f7c55ecceb8": {
+            "tender_name": "asdad",
+            "tender_number": "dasda",
+            "issue_date": "2024-10-24",
+            "submission_date": "2024-10-16",
+            "tender_files": [
+                "3E5B5DA3-CD66-4D14-870D-AD28E2B8ED64 (1).pdf"
+            ],
+            "cba_file": "B4D96E17-6756-45B9-B1EF-0A4F362B36C0.pdf"
+        },
+        "c4f23edb-3f5e-482e-9f5e-89df37414b55": {
+            "tender_name": "a",
+            "tender_number": "a",
+            "issue_date": "2024-10-24",
+            "submission_date": "2024-10-23",
+            "tender_files": [
+                "3E5B5DA3-CD66-4D14-870D-AD28E2B8ED64 (1).pdf"
+            ],
+            "cba_file": "B4D96E17-6756-45B9-B1EF-0A4F362B36C0.pdf"
         }
     }
 }
