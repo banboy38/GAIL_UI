@@ -23,6 +23,6 @@ function changeTheme(){
         console.log(e)        
     }
     document.body.setAttribute("data-theme", newTheme);
-
-
 }
+
+
