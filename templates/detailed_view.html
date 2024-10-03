@@ -1,0 +1,133 @@
+{% extends 'nav_template.html' %}
+
+{% block content %}
+<style>
+    .view-form{
+        display: flex;
+        justify-content: center;
+    }
+    .icon-view{
+        display: flex;
+        justify-content: space-around !important;
+    }
+</style>
+
+<div class="columns">
+    <div class="column  is-3">
+        <div class="box">
+            <form id="details" onchange="filterDetails()">
+                {%for filter in filters%}
+                <label>
+                    <input id="{{filter}}" name="BEC_Financial" type="checkbox"/><span>  {{filter}}</span>
+                </label>
+                <br style="margin: 10px 0 10px 0;">
+                {%endfor%}
+            </form>
+        </div>
+    </div>
+    <div class="column ">
+        <div class="box">
+            <table class="table is-bordered is-striped is-narrow is-hoverable">
+                <thead>
+                    <tr>
+                        {%for col in columns%}
+                        <th>{{col}}</th>
+                        {%endfor%}
+                    </tr>
+                </thead>
+                <tbody id="detailedTableBody">
+                {%for row in data%}
+                <tr>
+                    {%for cell in row%}
+                    <td>{{cell}}</td>
+                    {%endfor%}
+                </tr>
+                {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+        
+
+    <!-- Scripts -->
+<script>
+
+    const filters = ['BEC_Financial', 'Format_F5', 'Format_F6', 'Format_F7', 'Format_F8', 'Format_1', 'Integrity_Pact', 'Particulars']
+
+    const data = [
+        ['Particulars', "Name of Bidder", "NUMALIGARH REFINERY LIMITED", 'Hindustan Petroleum Corporation Limited'],
+        ['BEC Financial', "Name of Bidder", "NUMALIGARH REFINERY LIMITED", 'Hindustan Petroleum Corporation Limited'],
+        ['Format 1', "Name of Bidder", "NUMALIGARH REFINERY LIMITED", 'Hindustan Petroleum Corporation Limited'],            
+    ]
+
+    
+    function filterDetails(){
+        
+        let body = document.getElementById("detailedTableBody")
+        while (body.firstChild) {
+            body.removeChild(body.firstChild);
+        }
+        
+        let flag = false
+
+        for(let item of data){
+            
+            if(eval(`document.getElementById("details").${item[0].split(" ").join("_")}.checked`) === true){
+
+                flag = true
+
+                let row = document.createElement('tr')
+
+                row0 = document.createElement('td')
+                row0.innerHTML = item[0]
+                row.appendChild(row0)
+
+                row1 = document.createElement('td')
+                row1.innerHTML = item[1]
+                row.appendChild(row1)
+
+                row2 = document.createElement('td')
+                row2.innerHTML = item[2]
+                row.appendChild(row2)
+
+                row3 = document.createElement('td')
+                row3.innerHTML = item[3]
+                row.appendChild(row3)
+
+                body.appendChild(row)
+            }
+
+        }
+
+        if(flag === false){
+            for(let item of data){
+
+                let row = document.createElement('tr')
+
+                row0 = document.createElement('td')
+                row0.innerHTML = item[0]
+                row.appendChild(row0)
+
+                row1 = document.createElement('td')
+                row1.innerHTML = item[1]
+                row.appendChild(row1)
+
+                row2 = document.createElement('td')
+                row2.innerHTML = item[2]
+                row.appendChild(row2)
+
+                row3 = document.createElement('td')
+                row3.innerHTML = item[3]
+                row.appendChild(row3)
+
+                body.appendChild(row)                
+
+            }
+        }
+
+    }
+
+
+</script>
+{% endblock %}

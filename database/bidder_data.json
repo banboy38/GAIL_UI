@@ -1,94 +1,80 @@
 {
     "bidders": {
-        "1": {
-            "bidder_id": "1",
-            "bidder_name": "ABC Constructions",
-            "tender_id": "1",
+        "a61ca414-ff41-4975-85b3-9f4a846be0eb": {
+            "bidder_id": "a61ca414-ff41-4975-85b3-9f4a846be0eb",
+            "bidder_name": "HPCL",
+            "tender_id": "31202705-2be7-4000-b6c6-8c1f6facfb3d",
             "documents": [
-                "document1.pdf",
-                "document2.pdf"
-            ]
+                "financial statements.pdf",
+                "Forms and Formats.pdf",
+                "Lab test report 1.pdf",
+                "Lab test report 2.pdf",
+                "Lab test report 3.pdf",
+                "POA Forms PAN GST.pdf",
+                "POA.pdf",
+                "RTP DOC.pdf",
+                "RTP RATE.pdf"
+            ],
+            "status": {
+                "financial statements.pdf": "Completed",
+                "Forms and Formats.pdf": "Completed",
+                "Lab test report 1.pdf": "Completed",
+                "Lab test report 2.pdf": "Completed",
+                "Lab test report 3.pdf": "Completed",
+                "POA Forms PAN GST.pdf": "Completed",
+                "POA.pdf": "Completed",
+                "RTP DOC.pdf": "Completed",
+                "RTP RATE.pdf": "Completed"
+            }
         },
-        "2": {
-            "bidder_id": "2",
-            "bidder_name": "XYZ IT Solutions",
-            "tender_id": "2",
+        "99f85ab0-3373-4efb-b8ec-ce2c90cfd975": {
+            "bidder_id": "99f85ab0-3373-4efb-b8ec-ce2c90cfd975",
+            "bidder_name": "NRL",
+            "tender_id": "31202705-2be7-4000-b6c6-8c1f6facfb3d",
             "documents": [
-                "document3.pdf",
-                "document4.pdf"
-            ]
+                "17000262031464.pdf",
+                "17000262112413.pdf",
+                "17000263190313.pdf",
+                "certificat of quality.pdf",
+                "certificate of quality.pdf",
+                "f7.pdf",
+                "F-10 and partial financials.pdf",
+                "Forms and formats.pdf",
+                "MII Forms.pdf"
+            ],
+            "status": {
+                "17000262031464.pdf": "Completed",
+                "17000262112413.pdf": "Completed",
+                "17000263190313.pdf": "Completed",
+                "certificat of quality.pdf": "Completed",
+                "certificate of quality.pdf": "Completed",
+                "f7.pdf": "Completed",
+                "F-10 and partial financials.pdf": "Completed",
+                "Forms and formats.pdf": "Completed",
+                "MII Forms.pdf": "Completed"
+            }
         },
-        "3": {
-            "bidder_id": "3",
-            "bidder_name": "Office Supplies Co.",
-            "tender_id": "3",
+        "50e7dac3-ab5b-4689-888e-e66359604bd2": {
+            "bidder_id": "50e7dac3-ab5b-4689-888e-e66359604bd2",
+            "bidder_name": "ABC",
+            "tender_id": "cc275d87-2adc-46c4-9e3b-5fb4132aad54",
             "documents": [
-                "document5.pdf",
-                "document6.pdf"
-            ]
+                "POA.pdf"
+            ],
+            "status": {
+                "POA.pdf": "Processing"
+            }
         },
-        "4": {
-            "bidder_id": "4",
-            "bidder_name": "Construction Experts",
-            "tender_id": "1",
+        "a2954b55-b404-4513-a467-b44556d8503f": {
+            "bidder_id": "a2954b55-b404-4513-a467-b44556d8503f",
+            "bidder_name": "HPCL",
+            "tender_id": "8f89a736-4730-4302-bdb2-28523225247e",
             "documents": [
-                "document7.pdf",
-                "document8.pdf"
-            ]
-        },
-        "5": {
-            "bidder_id": "5",
-            "bidder_name": "Tech Innovators",
-            "tender_id": "2",
-            "documents": [
-                "document9.pdf",
-                "document10.pdf"
-            ]
-        },
-        "6": {
-            "bidder_id": "6",
-            "bidder_name": "Supply Chain Inc.",
-            "tender_id": "3",
-            "documents": [
-                "document11.pdf",
-                "document12.pdf"
-            ]
-        },
-        "34dd4c5f-22a7-4b1c-850c-081336645aaa": {
-            "bidder_id": "34dd4c5f-22a7-4b1c-850c-081336645aaa",
-            "bidder_name": "dadas",
-            "tender_id": "c4f23edb-3f5e-482e-9f5e-89df37414b55",
-            "documents": [
-                "3E5B5DA3-CD66-4D14-870D-AD28E2B8ED64 (1).pdf"
-            ]
-        },
-        "351abca7-b5eb-459b-84d9-7db0757a3080": {
-            "bidder_id": "351abca7-b5eb-459b-84d9-7db0757a3080",
-            "bidder_name": "adadasdasd",
-            "tender_id": "c4f23edb-3f5e-482e-9f5e-89df37414b55",
-            "documents": [
-                "Arbaaz_Chaudhari_Data_Sceintist(4) (1).pdf",
-                "B4D96E17-6756-45B9-B1EF-0A4F362B36C0.pdf"
-            ]
-        },
-        "92ec390d-7903-47ae-932a-eec8c8e35025": {
-            "bidder_id": "92ec390d-7903-47ae-932a-eec8c8e35025",
-            "bidder_name": "asdasda",
-            "tender_id": "c4f23edb-3f5e-482e-9f5e-89df37414b55",
-            "documents": [
-                "Arbaaz_Chaudhari_Data_Sceintist(4) (1).pdf",
-                "B4D96E17-6756-45B9-B1EF-0A4F362B36C0.pdf",
-                "Bidder Documents.pdf"
-            ]
-        },
-        "5b7247e7-1e14-44ed-b6b3-720e965ee474": {
-            "bidder_id": "5b7247e7-1e14-44ed-b6b3-720e965ee474",
-            "bidder_name": "cadasdasd",
-            "tender_id": "c4f23edb-3f5e-482e-9f5e-89df37414b55",
-            "documents": [
-                "Dipak Bhole CV.pdf",
-                "Harikrishna_Sappidi.pdf"
-            ]
+                "MII Forms.pdf"
+            ],
+            "status": {
+                "MII Forms.pdf": "Completed"
+            }
         }
     }
 }

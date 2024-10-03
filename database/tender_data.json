@@ -1,45 +1,37 @@
 {
     "tenders": {
-        "1": {
-            "tender_id": "1",
-            "tender_name": "Construction Project A",
-            "issue_date": "2023-10-01",
-            "submission_date": "2023-12-31",
-            "status": "Open"
-        },
-        "2": {
-            "tender_id": "2",
-            "tender_name": "IT Infrastructure Upgrade",
-            "issue_date": "2023-11-01",
-            "submission_date": "2024-01-31",
-            "status": "Closed"
-        },
-        "3": {
-            "tender_id": "3",
-            "tender_name": "Office Supplies Procurement",
-            "issue_date": "2023-09-15",
-            "submission_date": "2023-10-15",
-            "status": "Awarded"
-        },
-        "0a176703-ff41-49b5-9889-7f7c55ecceb8": {
-            "tender_name": "asdad",
-            "tender_number": "dasda",
-            "issue_date": "2024-10-24",
-            "submission_date": "2024-10-16",
+        "31202705-2be7-4000-b6c6-8c1f6facfb3d": {
+            "tender_id": "31202705-2be7-4000-b6c6-8c1f6facfb3d",
+            "tender_name": "RFS for 1200 MW solar plant",
+            "tender_number": "GE-24-25",
+            "issue_date": "2024-10-03",
+            "submission_date": "2024-10-17",
             "tender_files": [
-                "3E5B5DA3-CD66-4D14-870D-AD28E2B8ED64 (1).pdf"
+                "17000262031464.pdf"
             ],
-            "cba_file": "B4D96E17-6756-45B9-B1EF-0A4F362B36C0.pdf"
+            "cba_file": "CBA_Formatted_v2.xlsx"
         },
-        "c4f23edb-3f5e-482e-9f5e-89df37414b55": {
-            "tender_name": "a",
-            "tender_number": "a",
-            "issue_date": "2024-10-24",
-            "submission_date": "2024-10-23",
+        "cc275d87-2adc-46c4-9e3b-5fb4132aad54": {
+            "tender_id": "cc275d87-2adc-46c4-9e3b-5fb4132aad54",
+            "tender_name": "RFS -1500mw -Sample",
+            "tender_number": "GE-3055",
+            "issue_date": "2024-10-03",
+            "submission_date": "2024-10-17",
             "tender_files": [
-                "3E5B5DA3-CD66-4D14-870D-AD28E2B8ED64 (1).pdf"
+                "17000262031464.pdf"
             ],
-            "cba_file": "B4D96E17-6756-45B9-B1EF-0A4F362B36C0.pdf"
+            "cba_file": "CBA_Formatted_v2.xlsx"
+        },
+        "8f89a736-4730-4302-bdb2-28523225247e": {
+            "tender_id": "8f89a736-4730-4302-bdb2-28523225247e",
+            "tender_name": "Tender 1",
+            "tender_number": "123",
+            "issue_date": "2024-10-10",
+            "submission_date": "2024-10-17",
+            "tender_files": [
+                "17000262031464.pdf"
+            ],
+            "cba_file": "CBA_Formatted_v2.xlsx"
         }
     }
 }

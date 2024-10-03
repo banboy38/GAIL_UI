@@ -1,0 +1,344 @@
+{% extends 'nav_template.html' %}
+
+{% block content %}
+
+<div class="tabs is-centered is-boxed">
+    <ul>
+      <li class="is-active" id="dashboard_tab">
+        <a onclick="toggleTabs('dashboard')">
+          <span class="icon is-small"
+            ><i class="fas fa-chart-line"></i></span>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li id="summary_tab">
+        <a onclick="toggleTabs('summary')">
+          <span class="icon is-small"
+            ><i class="fas fa-table"></i></span>
+          <span>Details</span>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+
+
+<div class="dashboard" id="dashboard">
+    <style>
+        .view-form{
+            display: flex;
+            justify-content: center;
+        }
+        .icon-view{
+            display: flex;
+            justify-content: space-around !important;
+        }
+    </style>
+    
+       
+    
+    <!-- Details bar -->
+    <div class="box summary-details-bar">
+        
+        <!-- Individual Box -->
+        <div class="summary-detail-box">
+    
+            <div style="font-weight: 700; text-decoration: underline; color: #4257FD;">TENDER NAME</div>
+            <div style=" text-wrap:wrap;">{{tender.tender_name}}</div>
+    
+        </div>
+    
+        <!-- Individual Box -->
+        <div class="summary-detail-box">
+    
+            <div style="font-weight: 700; text-decoration: underline; color: #4257FD;">TENDER NUMBER</div>
+            <div style=" text-wrap:wrap;">{{tender.tender_number}}</div>
+    
+        </div>
+    
+        <!-- Individual Box -->
+        <div class="summary-detail-box">
+    
+            <div style="font-weight: 700; text-decoration: underline; color: #4257FD;">BID ISSUE DATE</div>
+            <div style=" text-wrap:wrap;">{{tender.issue_date}}</div>
+    
+        </div>
+    
+        <!-- Individual Box -->
+        <div class="summary-detail-box">
+    
+            <div style="font-weight: 700; text-decoration: underline; color: #4257FD;">BID DUE DATE</div>
+            <div style=" text-wrap:wrap;">{{tender.submission_date}}</div>
+    
+        </div>
+    
+        <!-- Number of Bidders Box -->
+        <div class="summary-detail-box">
+    
+            <div style="font-weight: 700; text-decoration: underline; color: #4257FD;">Number of Bidders</div>
+            <div style="font-size:xx-large; font-weight:800;">2</div>
+    
+        </div>
+        
+    </div>
+    
+    <div class="summary-charts box">
+        
+        <!-- Chart - Net Worth -->
+        <div class="chart-container">
+            <div style="font-weight: 700; font-size:small">Net Worth</div>
+            <canvas id="net-worth" style="width:370px; height: 90%"></canvas>
+        </div>
+    
+        <!-- Chart - Average Turnover -->
+        <div class="chart-container">
+            <div style="font-weight: 700; font-size:small">Average Turnover</div>
+            <canvas id="average-turnover" style="width:370px; height: 90%"></canvas>
+        </div>
+    
+        <!-- Chart - Working Capital -->
+        <div class="chart-container">
+            <div style="font-weight: 700; font-size:small">Working Capital</div>
+            <canvas id="working-capital" style="width:370px; height: 90%"></canvas>
+        </div>
+    
+    </div>
+    
+    <!-- Ratings Section -->
+    <table class="table" style="width:100%;box-shadow: 5px 0px 20px  rgba(128, 128, 128, 0.318);">
+        <thead>
+            <th class="summary-table-header">Vendor Name</th>
+            <th class="summary-table-header">Business Share</th>
+            <th class="summary-table-header">Price Point</th>
+            <th class="summary-table-header">Financial Stability</th>
+            <th class="summary-table-header">Delivery Performance</th>
+            <th class="summary-table-header">Quality</th>
+            <th class="summary-table-header">Years In Business</th>
+            <th class="summary-table-header">Overall</th>
+        </thead>
+    
+        <tbody>
+            <tr>
+                <td class="summary-table-data">
+                    ${Name}
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: green; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: orange; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                </td>
+            </tr>
+    
+            <tr>
+                <td class="summary-table-data">
+                    ${Name}
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: green; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: green; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: orange; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: green; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                </td>
+            </tr>
+    
+            <tr>
+                <td class="summary-table-data">
+                    ${Name}
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: orange; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: green; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: green; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: green; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                </td>
+            </tr>
+    
+            <tr>
+                <td class="summary-table-data">
+                    ${Name}
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: green; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: green; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: green; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: green; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: green; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: red; border-radius: 9999px"></div>
+                </td>
+                <td class="summary-table-data">
+                    <div style="width: 1rem; height:1rem; background-color: orange; border-radius: 9999px"></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+        <!-- Chart fetching scripts -->
+        
+</div>
+<div class="summary" id="summary">
+    
+    <div class="columns">
+        <div class="column  is-3">
+            <div class="box">
+                <form id="details" onchange="filterDetails()">
+                    {%for filter in filters%}
+                    <label>
+                        <input id="{{filter}}" name="BEC_Financial" type="checkbox"/><span>  {{filter}}</span>
+                    </label>
+                    <br style="margin: 10px 0 10px 0;">
+                    {%endfor%}
+                </form>
+            </div>
+        </div>
+        <div class="column ">
+            <div class="box">
+                <table class="table is-bordered is-striped is-narrow is-hoverable">
+                    <thead>
+                        <tr>
+                            {%for col in columns%}
+                            <th>{{col}}</th>
+                            {%endfor%}
+                        </tr>
+                    </thead>
+                    <tbody id="detailedTableBody">
+                    {%for row in data%}
+                    <tr>
+                        {%for cell in row%}
+                        <td>{{cell}}</td>
+                        {%endfor%}
+                    </tr>
+                    {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const xValues = [50,60,70,80,90,100,110,120,130,140,150];
+    const yValues = [7,8,8,9,9,9,10,11,14,14,15];
+    
+function draw_charts(container_id,labels,data, legend){
+    new Chart(container_id, {
+        type: "line",
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              type: 'bar',
+              label: legend[0],
+              data: data,
+              backgroundColor: 'rgba(54, 162, 235, 0.5)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 1,
+            },
+            {
+              type: 'line',
+              label: legend[1],
+              data: [20, 20, 20, 20, 20, 20, 20, 20],
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 2,
+              fill: false,
+            },
+          ],
+        },
+        options: {
+          legend: {
+              display: true,
+              labels: {
+                usePointStyle: true, // Optional, changes the point style to a circle
+              },
+          },
+          scales: {
+            yAxes: [{ticks: {min: 0}}],
+          }
+        }
+      });
+}
+net_worth={{net_worth|tojson}};
+turn_over={{turn_over|tojson}};
+working_capital={{working_capital|tojson}};
+draw_charts("net-worth",net_worth['labels'],net_worth['values'],legend=['Net Worth',"Revenue"]);
+draw_charts("average-turnover",turn_over['labels'],turn_over['values'],legend=['Turnover',"Revenue"]);
+draw_charts("working-capital",working_capital['labels'],working_capital['values'],legend=['Working Capital',"Revenue"]);
+
+
+function toggleTabs(idx){
+    if(idx=="dashboard"){
+        document.getElementById("summary").style.display = "none";
+        document.getElementById("summary_tab").classList.remove("is-active");
+        document.getElementById("dashboard").style.display = "block";
+        document.getElementById("dashboard_tab").classList.add("is-active");
+    }
+    else{
+        document.getElementById("dashboard").style.display = "none";
+        document.getElementById("dashboard_tab").classList.remove("is-active");
+        
+        document.getElementById("summary").style.display = "block";
+        document.getElementById("summary_tab").classList.add("is-active");
+        
+    }
+
+}
+</script>
+
+{% endblock %}

@@ -7,8 +7,11 @@ import os
 from queue import Queue, Empty
 from threading import Thread
 
-from bidder_pipeline import bid_eval_doc_processor
+from bidder_pipeline import bid_eval_doc_processor,bid_eval_doc_extractor
 from time import sleep
+import pandas as pd
+
+
 app = flask.Flask(__name__)
 app.secret_key="gailpockey"
 DB_DETAILS={
@@ -27,7 +30,7 @@ def game_loop():
             command = commands.get_nowait()
             for files in command['pdf_file']:
                 bidder=bidders_json.read_json(DB_DETAILS['bidders'])['bidders'][command['bidder_id']]
-                bidder['status'][command['pdf_file']]="Processing"
+                bidder['status'][files]="Processing"
                 bidders_json.update_json(command['bidder_id'], bidder, DB_DETAILS['bidders'])
                 out=bid_eval_doc_processor({
                     "cba_path": command['cba_path'],
@@ -36,8 +39,9 @@ def game_loop():
                     "bidder_id": command['bidder_id'],
                     "bidder_path": command['bidder_path']
                 })
-                bidder['status'][command['pdf_file']]="Completed"
+                bidder['status'][files]="Completed"
                 bidders_json.update_json(command['bidder_id'], bidder, DB_DETAILS['bidders'])
+            bid_eval_doc_extractor(command)
         except Empty:
             pass
         sleep(5)  # TODO poll other things
@@ -48,16 +52,22 @@ Thread(target=game_loop, daemon=True).start()
 
 @app.route('/',methods=['GET','POST'])
 def index():
-    all_tenders=tender_json.read_json(DB_DETAILS['tender'])
-    tenders=all_tenders['tenders'].values()
-    if flask.request.method=="POST":
-        tender_id=flask.request.form.get("tender_id")
-        tender_status=flask.request.form.get("tender_status")
-        print(tender_id,tender_status)
+    if flask.request.args.get('status') ==None:
+        all_tenders=tender_json.read_json(DB_DETAILS['tender'])
+        tenders=all_tenders['tenders'].values()
+        if flask.request.method=="POST":
+            tender_id=flask.request.form.get("tender_id")
+            tender_status=flask.request.form.get("tender_status")
+           
         return flask.render_template('landingpage.html',
-                                 tenders=tenders)
-    return flask.render_template('landingpage.html',
-                                 tenders=tenders)
+                                    tenders=tenders)
+    else:
+        all_tenders=tender_json.read_json(DB_DETAILS['tender'])
+        tenders=all_tenders['tenders'].values()
+        return flask.render_template('landingpage.html',
+                                    tenders=tenders,
+                                    status=flask.request.args.get('status'),
+                                    message=flask.request.args.get('messages'))
     
     
 @app.route('/create_new_tender/',methods=['GET','POST'])
@@ -103,7 +113,9 @@ def bidders(tender_id):
                             "pdf_file": saved_files,
                             "bidder_name": bidder_name,
                             "bidder_id": bidder_id,
-                            "bidder_path": os.path.join(DATA_UPLOAD_FOLDER,tender_id,'bidders')})
+                            "bidder_path": os.path.join(DATA_UPLOAD_FOLDER,tender_id,'bidders',bidder_id),
+                            "out_path": os.path.join(DATA_UPLOAD_FOLDER,tender_id,'outputs')
+                            })
     
     
     all_bidders=bidders_json.read_json(DB_DETAILS['bidders'])['bidders']
@@ -111,9 +123,69 @@ def bidders(tender_id):
     
     return flask.render_template('bidders.html',bidders=filter_bidders,tender_id=tender_id)
 
-@app.route('/bid_view/<bider_id>',methods=['GET','POST'])
+@app.route('/bid_view/<bider_id>/',methods=['GET','POST'])
 def bid_view(bider_id):
-    return flask.render_template('bid_view.html',bid=['file_1.pdf',"file_2.pdf"])
+    bidder=bidders_json.read_json(DB_DETAILS['bidders'])['bidders'][bider_id]
+    path=os.path.join(DATA_UPLOAD_FOLDER,bidder['tender_id'],'bidders',bider_id,"meta_info.csv")
+    columns=[]
+    data=[]
+    if os.path.exists(path):
+        df=pd.read_csv(path)
+        columns=list(df.columns)
+        data=df.values.tolist()
+    
+    return flask.render_template('bid_view.html',
+                                 bidder_id=bider_id,
+                                 bidder=bidder,
+                                columns=columns,
+                                data=data
+                                 )
+@app.route('/dashboard_tab/<tender_id>/',methods=['GET','POST'])
+def dashboard_tab(tender_id):
+    tender=tender_json.read_json(DB_DETAILS['tender'])['tenders'][tender_id]
+    bidder=bidders_json.read_json(DB_DETAILS['bidders'])['bidders']
+    columns=[]
+    data=[]
+    filters=[]
+    bidder_list=[v for b,v in bidder.items() if v['tender_id']==tender_id]
+    if os.path.exists(os.path.join(DATA_UPLOAD_FOLDER,tender_id,'outputs',"extracted.csv")):
+        df=pd.read_csv(os.path.join(DATA_UPLOAD_FOLDER,tender_id,'outputs',"extracted.csv"))
+        turn_over=df[df.Field.str.contains("annual turnover",case=False)].to_dict(orient='records')[0]
+        turn_over={k:v for k,v in turn_over.items() if k not in ['Field',"Type of Parameter"]}
+        net_worth=df[df.Field.str.contains("net worth",case=False)].to_dict(orient='records')[0]
+        net_worth={k:v for k,v in net_worth.items() if k not in ['Field',"Type of Parameter"]}
+        working_capital =df[df.Field.str.contains("working capital",case=False)].to_dict(orient='records')[0]
+        working_capital={k:v for k,v in working_capital.items() if k not in ['Field',"Type of Parameter"]}
+        columns=df.columns
+        data=df.values.tolist()
+        filters=df['Type of Parameter'].unique().tolist()
+        filters=["_".join(filter.split()) for filter in filters]
+    else:
+        return flask.redirect(flask.url_for('index',status="Error",messages="Processing is still going on. Please check back later"))
+    return flask.render_template('tab_summary.html',
+                                 bidder_list=bidder_list,
+                                 tender_id=tender_id,
+                                 tender=tender,
+                                 net_worth={
+                                     "labels":list(net_worth.keys()),
+                                     "values":list(net_worth.values())
+                                     },
+                                 working_capital={
+                                     "labels":list(working_capital.keys()),
+                                     "values":list(working_capital.values())
+                                     },
+                                 turn_over={
+                                     "labels":list(turn_over.keys()),
+                                     "values":list(turn_over.values())
+                                     },
+                                columns=df.columns,
+                                data=df.values.tolist(),
+                                filters=filters
+                                 )
+    
+
+
+    
 
 @app.route('/upload_tender_documents/', methods=['POST'])
 def upload_tender_documents():
@@ -138,7 +210,7 @@ def upload_tender_documents():
     
     if cba_file:
         
-        cba_file.save(os.path.join(DATA_UPLOAD_FOLDER,tender_id,'cba',cba_file.filename))
+        cba_file.save(os.path.join(DATA_UPLOAD_FOLDER,tender_id,'cba',"CBA.xlsx"))
     
     tender_data = {
         "tender_id":tender_id,
@@ -200,4 +272,4 @@ def trigger(name):
 
 
 if __name__=='__main__':
-    app.run(debug=True,port=5005)
+    app.run(debug=False,port=5005)

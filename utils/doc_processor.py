@@ -97,6 +97,7 @@ def extract(vdb,field_info,bidder_name,actual_df,extract_qachains,desc_qachain,c
     extracted_data = []
     k_value = 8
     for  info in tqdm.tqdm(field_info):
+        field_perticumlar = info[0]
         field_name = info[1]
         field_type = info[2]
         field_desc = info[3]
@@ -142,7 +143,8 @@ def extract(vdb,field_info,bidder_name,actual_df,extract_qachains,desc_qachain,c
             "tab_information":actual_df_
         })
         extracted_data.append({
-            "field":field_name,
-            "value":out.value
+            "Type of Parameter":field_perticumlar,
+            "Field":field_name,
+            f"{bidder_name}":out.value
         })
     return extracted_data

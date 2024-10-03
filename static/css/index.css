@@ -57,6 +57,7 @@ tr{
     padding: 5px 20px 5px 20px;
     height: 400px;
 }
+
 .tender-form-container{
     display: flex; justify-content: space-between; width: 100%;
     gap:2rem;
@@ -75,6 +76,9 @@ tr{
 
 .field-tender{
     /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
     width: 70%;
 }
 
@@ -100,7 +104,6 @@ tr{
 .label-tender{
     font-weight: 700;
 }
-
 
 .summary-main-section{
     display: flex;
