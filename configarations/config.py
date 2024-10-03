@@ -36,7 +36,7 @@ all_config={
     "doc_intelligence":doc_intelligence,
     "embedding":embedding
 }
-ENV="MAC"
+ENV="WIN"#"MAC"
 
 
 

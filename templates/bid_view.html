@@ -11,6 +11,7 @@
 </nav>
 
 <h1 class="title">Bidder Name</h1>
+<h2 class="subtitle">ID:{{bidder_id}}</h2>
 <hr>
 <h1 class="subtitle">Document Processing Status</h1>
 
@@ -23,10 +24,10 @@
             </tr>
         </thead>
         <tbody>
-            {%for link in bid%}
+            {%for link in bidder['status']%}
             <tr>
                 <td>{{link}}</td>
-                <td>Processing</td>
+                <td>{{bidder['status'][link]}}</td>
             </tr>
             {%endfor%}
         </tbody>
@@ -34,40 +35,27 @@
     </table>
 </div>
 
-
+{%if columns|length >0 %}
 <h1 class="subtitle">Key Data Feilds Extraction <span><i class="fas fa-download"></i></span></h1>
 
 <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
     <thead>
         <tr>
-            <th>Category</th>
-            <th>Field Name</th>
-            <th>Field Value</th>
-            <th>Context</th>
+            {%for col in columns%}
+            <th>{{col}}</th>
+            {%endfor%}
         </tr>
     </thead>
     <tbody>
-       
+    {%for row in data%}
     <tr>
-        <td>Category 1</td>
-        <td>Field Name 1</td>
-        <td>Field Value 1</td>
-        <td>Context 1</td>
+        {%for cell in row%}
+        <td>{{cell}}</td>
+        {%endfor%}
     </tr>
-    <tr>
-        <td>Category 2</td>
-        <td>Field Name 2</td>
-        <td>Field Value 2</td>
-        <td>Context 2</td>
-    </tr>
-    <tr>
-        <td>Category 3</td>
-        <td>Field Name 3</td>
-        <td>Field Value 3</td>
-        <td>Context 3</td>
-    </tr>
+    {%endfor%}
     </tbody>
 </table>
-
+{%endif%}
 
 {% endblock %}

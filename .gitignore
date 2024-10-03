@@ -2,3 +2,6 @@
 __pycache__/
 TBD/*
 TBD_IMGS/*
+DataBases/*
+*.csv
+*.xlsx
